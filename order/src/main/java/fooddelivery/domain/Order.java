@@ -1,6 +1,7 @@
 package fooddelivery.domain;
 
 import fooddelivery.domain.OrderPlaced;
+import fooddelivery.external.Cooking;
 import fooddelivery.domain.OrderCancelled;
 import fooddelivery.OrderApplication;
 import javax.persistence.*;
@@ -64,6 +65,17 @@ public class Order  {
 
     }    
 
+    @PreRemove
+    public void onPreRemove() {
+        // Get request from Inventory
+        fooddelivery.external.Cooking cooking =
+            OrderApplication.applicationContext.getBean(fooddelivery.external.CookingService.class)
+           .getCooking(Long.valueOf(getId()));
+
+        if ("요리시작됨".equals(cooking.getStatus()) || "요리완료됨".equals(cooking.getStatus())) throw new RuntimeException("Cooking Started !");
+
+    }
+
 
 
     public static OrderRepository repository(){
@@ -75,11 +87,11 @@ public class Order  {
 
     public void cancelOrder(){
 
-        if (getStatus()==null || "주문됨".equals(getStatus()) || "주문수락됨".equals(getStatus())) {
-            this.setStatus("주문취소됨");
-            OrderCancelled orderCancelled = new OrderCancelled(this);
-            orderCancelled.publishAfterCommit();
-        }
+        // if (getStatus()==null || "주문됨".equals(getStatus()) || "주문수락됨".equals(getStatus())) {
+        //     this.setStatus("주문취소됨");
+        //     OrderCancelled orderCancelled = new OrderCancelled(this);
+        //     orderCancelled.publishAfterCommit();
+        // }
 
     }
 
