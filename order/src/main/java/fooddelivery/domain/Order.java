@@ -84,10 +84,11 @@ public class Order  {
         return orderRepository;
     }
 
-
-
-    public void cancelOrder(){
+    public void cancel order(){
+        //
     }
+
+
 
     public static void updateStatus(OrderAccepted orderAccepted){
 
