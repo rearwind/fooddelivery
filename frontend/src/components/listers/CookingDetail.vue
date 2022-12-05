@@ -24,7 +24,7 @@
                 <String label="Status" v-model="item.status" :editMode="editMode" @change="change" />
             </div>
             <div>
-                <Number label="Stock" v-model="item.stock" :editMode="editMode" @change="change" />
+                <Boolean label="Available" v-model="item.available" :editMode="editMode" @change="change" />
             </div>
         </v-card-text>
 

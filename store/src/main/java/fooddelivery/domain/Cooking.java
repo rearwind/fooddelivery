@@ -62,7 +62,7 @@ public class Cooking  {
     
     
     
-    private Integer stock;
+    private Boolean available;
 
     @PostPersist
     public void onPostPersist(){

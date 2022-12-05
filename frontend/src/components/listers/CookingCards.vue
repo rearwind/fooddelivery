@@ -74,7 +74,7 @@
                 'address': '',
                 'customerId': '',
                 'status': '',
-                'stock': 0,
+                'available': false,
             }
         },
         methods:{
