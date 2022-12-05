@@ -37,10 +37,10 @@ public class Order  {
     private String status;
 
 
-    @PrePersist
-    public void checkAvailability(){
-        if(cookingService().checkAvailability(Long.valueOf(getOrderId())).getStock() < getQty()) throw new RuntimeException("Out of stock");
-    }
+    // @PrePersist
+    // public void checkAvailability(){
+    //     if(cookingService().checkAvailability(Long.valueOf(getOrderId())).getStock() < getQty()) throw new RuntimeException("Out of stock");
+    // }
 
 
     @PostPersist
@@ -56,6 +56,8 @@ public class Order  {
 
         OrderApplication.applicationContext.getBean(fooddelivery.external.PaymentService.class)
             .pay(getId(), payment);
+
+        setStatus("주문됨");
 
         OrderPlaced orderPlaced = new OrderPlaced(this);
         orderPlaced.publishAfterCommit();

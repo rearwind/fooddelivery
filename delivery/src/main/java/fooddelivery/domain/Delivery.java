@@ -51,14 +51,13 @@ public class Delivery  {
     @PostPersist
     public void onPostPersist(){
 
-
-        DeliveryCancelled deliveryCancelled = new DeliveryCancelled(this);
-        deliveryCancelled.publishAfterCommit();
-
+        // DeliveryCancelled deliveryCancelled = new DeliveryCancelled(this);
+        // deliveryCancelled.publishAfterCommit();
 
 
-        Delivered delivered = new Delivered(this);
-        delivered.publishAfterCommit();
+
+        // Delivered delivered = new Delivered(this);
+        // delivered.publishAfterCommit();
 
     }
 
@@ -80,6 +79,8 @@ public class Delivery  {
     public void confirmDelivered(){
 
         setStatus("배달완료됨");
+        Delivered delivered = new Delivered(this);
+        delivered.publishAfterCommit();
         
     }
 
@@ -90,6 +91,7 @@ public class Delivery  {
         delivery.setOrderId(orderAccepted.getOrderId());
         delivery.setCustomerId(orderAccepted.getCustomerId());
         delivery.setAddress(orderAccepted.getAddress());
+        delivery.setStatus("주문수락됨");
         repository().save(delivery);
 
         
