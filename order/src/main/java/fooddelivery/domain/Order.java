@@ -72,6 +72,8 @@ public class Order  {
             OrderApplication.applicationContext.getBean(fooddelivery.external.CookingService.class)
            .getCooking(Long.valueOf(getId()));
 
+        if ("요리시작됨".equals(cooking.getStatus()) || "요리완료됨".equals(cooking.getStatus())) throw new RuntimeException("요리시작됨!");
+
         OrderCancelled orderCancelled = new OrderCancelled(this);
         orderCancelled.publishAfterCommit();
 
