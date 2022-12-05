@@ -70,7 +70,13 @@ public class Delivery  {
     }
 
     public void confirmDelivered(){
+
+        setStatus("배달완료됨");
+        Delivered delivered = new Delivered(this);
+        delivered.publishAfterCommit();
     }
+
+    
 
     public static void copyOrderInfo(OrderAccepted orderAccepted){
 
