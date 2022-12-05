@@ -1,11 +1,10 @@
 package fooddelivery.domain;
 
-import fooddelivery.domain.*;
 import fooddelivery.infra.AbstractEvent;
-import lombok.*;
+import lombok.Data;
 import java.util.*;
+
 @Data
-@ToString
 public class OrderAccepted extends AbstractEvent {
 
     private Long id;
@@ -16,5 +15,3 @@ public class OrderAccepted extends AbstractEvent {
     private String customerId;
     private String status;
 }
-
-
