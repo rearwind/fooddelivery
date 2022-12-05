@@ -73,7 +73,7 @@
                     { text: "address", value: "address" },
                     { text: "customerId", value: "customerId" },
                     { text: "status", value: "status" },
-                    { text: "stock", value: "stock" },
+                    { text: "available", value: "available" },
                 ],
             cooking : [],
             newValue: {},
@@ -97,7 +97,7 @@
                 'address': '',
                 'customerId': '',
                 'status': '',
-                'stock': 0,
+                'available': false,
             }
         },
         methods: {

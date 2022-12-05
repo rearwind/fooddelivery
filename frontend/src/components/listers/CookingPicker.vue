@@ -33,7 +33,7 @@
                                 Status :  {{item.status }}
                             </v-list-item-subtitle>
                             <v-list-item-subtitle>
-                                Stock :  {{item.stock }}
+                                Available :  {{item.available }}
                             </v-list-item-subtitle>
                         </v-list-item-content>
 
