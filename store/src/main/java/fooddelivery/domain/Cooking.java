@@ -60,9 +60,7 @@ public class Cooking  {
     
     
     
-    
-    
-    private Boolean available;
+
 
     @PostPersist
     public void onPostPersist(){

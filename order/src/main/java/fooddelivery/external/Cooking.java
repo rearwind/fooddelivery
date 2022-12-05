@@ -12,7 +12,6 @@ public class Cooking {
     private String address;
     private String customerId;
     private String status;
-    private Boolean available;
 }
 
 
