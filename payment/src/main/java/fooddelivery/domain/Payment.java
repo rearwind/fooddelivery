@@ -1,7 +1,7 @@
 package fooddelivery.domain;
 
-import fooddelivery.domain.PayAccepted;
 import fooddelivery.domain.PayCancelled;
+import fooddelivery.domain.PayAccepted;
 import fooddelivery.PaymentApplication;
 import javax.persistence.*;
 
@@ -71,6 +71,16 @@ public class Payment  {
 
     }
 
+ /*    @PrePersist
+    public void onPrePersist(){
+
+
+        PayAccepted payAccepted = new PayAccepted(this);
+        payAccepted.publishAfterCommit();
+
+    }
+*/
+
     public static PaymentRepository repository(){
         PaymentRepository paymentRepository = PaymentApplication.applicationContext.getBean(PaymentRepository.class);
         return paymentRepository;
@@ -79,6 +89,11 @@ public class Payment  {
 
 
     public void pay(){
+        // if ("cancel".equals(action)) {
+        //     PayCancelled payCancelled = new PayCancelled();
+        //     BeanUtils.copyProperties(this, payCancelled);
+        //     payCancelled.publish();
+        // }
     }
 
     public static void updateStatus(OrderCancelled orderCancelled){

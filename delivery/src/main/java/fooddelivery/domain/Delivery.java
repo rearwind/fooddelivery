@@ -1,6 +1,5 @@
 package fooddelivery.domain;
 
-import fooddelivery.domain.Picked;
 import fooddelivery.domain.DeliveryCancelled;
 import fooddelivery.domain.Delivered;
 import fooddelivery.DeliveryApplication;
@@ -53,11 +52,6 @@ public class Delivery  {
     public void onPostPersist(){
 
 
-        Picked picked = new Picked(this);
-        picked.publishAfterCommit();
-
-
-
         DeliveryCancelled deliveryCancelled = new DeliveryCancelled(this);
         deliveryCancelled.publishAfterCommit();
 
@@ -75,6 +69,13 @@ public class Delivery  {
 
 
 
+    public void pick(){
+        Picked picked = new Picked(this);
+        picked.publishAfterCommit();
+
+    }
+    public void confirmDelivered(){
+    }
 
     public static void copyOrderInfo(OrderAccepted orderAccepted){
 

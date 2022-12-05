@@ -1,7 +1,7 @@
 package fooddelivery.domain;
 
-import fooddelivery.domain.OrderCancelled;
 import fooddelivery.domain.OrderPlaced;
+import fooddelivery.domain.OrderCancelled;
 import fooddelivery.OrderApplication;
 import javax.persistence.*;
 import java.util.List;
@@ -71,7 +71,7 @@ public class Order  {
             OrderCancelled orderCancelled = new OrderCancelled(this);
             orderCancelled.publishAfterCommit();
         }
-        
+
     }
 
     public static void updateStatus(OrderAccepted orderAccepted){

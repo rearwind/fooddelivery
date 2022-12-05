@@ -1,7 +1,5 @@
 package fooddelivery.domain;
 
-import fooddelivery.domain.CookingStarted;
-import fooddelivery.domain.CookingFinished;
 import fooddelivery.StoreApplication;
 import javax.persistence.*;
 import java.util.List;
@@ -62,16 +60,6 @@ public class Cooking  {
 
     @PostPersist
     public void onPostPersist(){
-
-
-        CookingStarted cookingStarted = new CookingStarted(this);
-        cookingStarted.publishAfterCommit();
-
-
-
-        CookingFinished cookingFinished = new CookingFinished(this);
-        cookingFinished.publishAfterCommit();
-
     }
 
     public static CookingRepository repository(){
@@ -92,6 +80,16 @@ public class Cooking  {
             OrderRejected orderRejected = new OrderRejected(this);
             orderRejected.publishAfterCommit();
         }
+
+    }
+    public void start(){
+        CookingStarted cookingStarted = new CookingStarted(this);
+        cookingStarted.publishAfterCommit();
+
+    }
+    public void finish(){
+        CookingFinished cookingFinished = new CookingFinished(this);
+        cookingFinished.publishAfterCommit();
 
     }
 
