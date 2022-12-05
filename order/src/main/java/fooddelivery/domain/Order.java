@@ -48,7 +48,7 @@ public class Order  {
             payment.setPrice(getPrice());
 
         OrderApplication.applicationContext.getBean(fooddelivery.external.PaymentService.class)
-            .pay(payment);
+            .pay(getId(), payment);
 
         OrderPlaced orderPlaced = new OrderPlaced(this);
         orderPlaced.publishAfterCommit();
@@ -66,7 +66,12 @@ public class Order  {
 
     public void cancelOrder(){
 
-
+        if (getStatus()==null || "주문됨".equals(getStatus()) || "주문수락됨".equals(getStatus())) {
+            this.setStatus("주문취소됨");
+            OrderCancelled orderCancelled = new OrderCancelled(this);
+            orderCancelled.publishAfterCommit();
+        }
+        
     }
 
     public static void updateStatus(OrderAccepted orderAccepted){
@@ -77,16 +82,16 @@ public class Order  {
 
         */
 
-        /** Example 2:  finding and process
+        /** Example 2:  finding and process */
         
-        repository().findById(orderAccepted.get???()).ifPresent(order->{
+        repository().findById(orderAccepted.getOrderId()).ifPresent(order->{
             
-            order // do something
+            order.setStatus("주문수락됨"); // do something
             repository().save(order);
 
 
          });
-        */
+        
 
         
     }
@@ -98,16 +103,16 @@ public class Order  {
 
         */
 
-        /** Example 2:  finding and process
+        /** Example 2:  finding and process */
         
-        repository().findById(orderRejected.get???()).ifPresent(order->{
+        repository().findById(orderRejected.getOrderId()).ifPresent(order->{
             
-            order // do something
+            order.setStatus("주문거절됨"); // do something
             repository().save(order);
 
 
          });
-        */
+        
 
         
     }
@@ -119,16 +124,15 @@ public class Order  {
 
         */
 
-        /** Example 2:  finding and process
+        /** Example 2:  finding and process */
         
-        repository().findById(cookingStarted.get???()).ifPresent(order->{
+        repository().findById(cookingStarted.getOrderId()).ifPresent(order->{
             
-            order // do something
-            repository().save(order);
+            order.setStatus("요리시작됨"); // do something
+            repository().save(order); 
 
 
          });
-        */
 
         
     }
@@ -140,16 +144,16 @@ public class Order  {
 
         */
 
-        /** Example 2:  finding and process
+        /** Example 2:  finding and process */
         
-        repository().findById(cookingFinished.get???()).ifPresent(order->{
+        repository().findById(cookingFinished.getOrderId()).ifPresent(order->{
             
-            order // do something
+            order.setStatus("요리완료됨"); // do something
             repository().save(order);
 
 
          });
-        */
+
 
         
     }
@@ -161,16 +165,16 @@ public class Order  {
 
         */
 
-        /** Example 2:  finding and process
+        /** Example 2:  finding and process */
         
-        repository().findById(picked.get???()).ifPresent(order->{
+        repository().findById(picked.getOrderId()).ifPresent(order->{
             
-            order // do something
+            order.setStatus("배달시작됨"); // do something
             repository().save(order);
 
 
          });
-        */
+        
 
         
     }
@@ -182,16 +186,16 @@ public class Order  {
 
         */
 
-        /** Example 2:  finding and process
+        /** Example 2:  finding and process */
         
-        repository().findById(delivered.get???()).ifPresent(order->{
+        repository().findById(delivered.getOrderId()).ifPresent(order->{ 
             
-            order // do something
+            order.setStatus("배달완료됨"); // do something
             repository().save(order);
 
 
          });
-        */
+        
 
         
     }

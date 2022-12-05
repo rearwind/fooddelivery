@@ -4,6 +4,12 @@ import fooddelivery.domain.PayAccepted;
 import fooddelivery.domain.PayCancelled;
 import fooddelivery.PaymentApplication;
 import javax.persistence.*;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.transaction.support.TransactionSynchronization;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
+import org.springframework.transaction.support.TransactionSynchronizationAdapter;
+
 import java.util.List;
 import lombok.Data;
 import java.util.Date;
@@ -20,8 +26,6 @@ public class Payment  {
     
     
     
-    
-    
     private Long id;
    
     private Long orderId;
@@ -30,21 +34,23 @@ public class Payment  {
 
     private String status;
 
+    private String action;
+
 
     @PrePersist
     public void onPrePersist(){
         if ("cancel".equals(action)) {
-            PaymentCancelled paymentCancelled = new PaymentCancelled();
-            BeanUtils.copyProperties(this, paymentCancelled);
-            paymentCancelled.publish();
+            PayCancelled payCancelled = new PayCancelled();
+            BeanUtils.copyProperties(this, payCancelled);
+            payCancelled.publish();
         } else {
-            Paid paid = new Paid();
-            BeanUtils.copyProperties(this, paid);
+            PayAccepted payAccepted = new PayAccepted();
+            BeanUtils.copyProperties(this, payAccepted);
     
             TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronizationAdapter() {
                 @Override
                 public void beforeCommit(boolean readOnly) {
-                    paid.publish();
+                    payAccepted.publish();
                 }
             });
         }
@@ -55,13 +61,13 @@ public class Payment  {
     public void onPostPersist(){
 
 
-        PayAccepted payAccepted = new PayAccepted(this);
-        payAccepted.publishAfterCommit();
+        // PayAccepted payAccepted = new PayAccepted(this);
+        // payAccepted.publishAfterCommit();
 
 
 
-        PayCancelled payCancelled = new PayCancelled(this);
-        payCancelled.publishAfterCommit();
+        // PayCancelled payCancelled = new PayCancelled(this);
+        // payCancelled.publishAfterCommit();
 
     }
 
@@ -89,7 +95,7 @@ public class Payment  {
         
         repository().findByOrderId(orderCancelled.getId()).ifPresent(payment->{
             
-            payment // do something
+            payment.setAction("cancel"); // do something
             repository().save(payment);
 
             PayCancelled payCancelled = new PayCancelled(payment);

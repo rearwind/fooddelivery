@@ -78,11 +78,14 @@ public class Delivery  {
 
     public static void copyOrderInfo(OrderAccepted orderAccepted){
 
-        /** Example 1:  new item 
+        /** Example 1:  new item */
         Delivery delivery = new Delivery();
+        delivery.setOrderId(orderAccepted.getOrderId());
+        delivery.setCustomerId(orderAccepted.getCustomerId());
+        delivery.setAddress(orderAccepted.getAddress());
         repository().save(delivery);
 
-        */
+        
 
         /** Example 2:  finding and process
         
@@ -105,16 +108,16 @@ public class Delivery  {
 
         */
 
-        /** Example 2:  finding and process
+        /** Example 2:  finding and process */
         
-        repository().findById(cookingStarted.get???()).ifPresent(delivery->{
+        repository().findByOrderId(cookingStarted.getOrderId()).ifPresent(delivery->{
             
-            delivery // do something
+            delivery.setStatus("요리시작됨"); // do something
             repository().save(delivery);
 
 
          });
-        */
+        
 
         
     }
@@ -126,16 +129,16 @@ public class Delivery  {
 
         */
 
-        /** Example 2:  finding and process
+        /** Example 2:  finding and process */
         
-        repository().findById(cookingFinished.get???()).ifPresent(delivery->{
+        repository().findByOrderId(cookingFinished.getOrderId()).ifPresent(delivery->{
             
-            delivery // do something
+            delivery.setStatus("요리완료됨"); // do something
             repository().save(delivery);
 
 
          });
-        */
+        
 
         
     }

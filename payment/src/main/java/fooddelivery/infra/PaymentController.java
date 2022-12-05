@@ -25,11 +25,19 @@ public class PaymentController {
         produces = "application/json;charset=UTF-8")
     public Payment pay(@PathVariable(value = "id") Long id, HttpServletRequest request, HttpServletResponse response) throws Exception {
             System.out.println("##### /payment/pay  called #####");
-            Optional<Payment> optionalPayment = paymentRepository.findById(id);
+ //           Optional<Payment> optionalPayment = paymentRepository.findByOrderId(id);
             
-            optionalPayment.orElseThrow(()-> new Exception("No Entity Found"));
-            Payment payment = optionalPayment.get();
-            payment.pay();
+ //           optionalPayment.orElseThrow(()-> new Exception("No Entity Found"));
+ //           Payment payment = optionalPayment.get();
+ //           payment.pay();
+            
+ //           paymentRepository.save(payment);
+ //           return payment;
+
+            Payment payment = new Payment();
+            payment.setOrderId(id);
+            payment.setPrice(payment.getPrice());
+            payment.setAction("pay");
             
             paymentRepository.save(payment);
             return payment;
