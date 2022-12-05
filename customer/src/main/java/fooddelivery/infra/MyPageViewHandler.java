@@ -27,9 +27,9 @@ public class MyPageViewHandler {
             // view 객체 생성
             MyPage myPage = new MyPage();
             // view 객체에 이벤트의 Value 를 set 함
+            myPage.setStatus("주문됨");
             myPage.setId(orderPlaced.getId());
             myPage.setOrderId(orderPlaced.getId());
-            myPage.setStatus("주문됨");
             // view 레파지 토리에 save
             myPageRepository.save(myPage);
 
