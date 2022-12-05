@@ -27,6 +27,7 @@ public class MyPageViewHandler {
             // view 객체 생성
             MyPage myPage = new MyPage();
             // view 객체에 이벤트의 Value 를 set 함
+            myPage.setId(orderPlaced.getId());
             myPage.setOrderId(orderPlaced.getId());
             myPage.setStatus("주문됨");
             // view 레파지 토리에 save
@@ -47,7 +48,7 @@ public class MyPageViewHandler {
                 List<MyPage> myPageList = myPageRepository.findByOrderId(payAccepted.getOrderId());
                 for(MyPage myPage : myPageList){
                     // view 객체에 이벤트의 eventDirectValue 를 set 함
-                    myPage.setStatus("결제승인");
+                    myPage.setStatus("결제승인됨");
                 // view 레파지 토리에 save
                 myPageRepository.save(myPage);
                 }

@@ -70,11 +70,17 @@ public class Delivery  {
 
 
     public void pick(){
+        
+        setStatus("배달시작됨");
         Picked picked = new Picked(this);
         picked.publishAfterCommit();
 
     }
+
     public void confirmDelivered(){
+
+        setStatus("배달완료됨");
+        
     }
 
     public static void copyOrderInfo(OrderAccepted orderAccepted){
