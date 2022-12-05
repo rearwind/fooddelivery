@@ -25,7 +25,7 @@ public class CookingController {
         produces = "application/json;charset=UTF-8")
     public Cooking accept(@PathVariable(value = "id") Long id, @RequestBody AcceptCommand acceptCommand, HttpServletRequest request, HttpServletResponse response) throws Exception {
             System.out.println("##### /cooking/accept  called #####");
-            Optional<Cooking> optionalCooking = cookingRepository.findByOrderId(id);
+            Optional<Cooking> optionalCooking = cookingRepository.findById(id);
             
             optionalCooking.orElseThrow(()-> new Exception("No Entity Found"));
             Cooking cooking = optionalCooking.get();
@@ -44,7 +44,7 @@ public class CookingController {
         produces = "application/json;charset=UTF-8")
     public Cooking start(@PathVariable(value = "id") Long id, HttpServletRequest request, HttpServletResponse response) throws Exception {
             System.out.println("##### /cooking/start  called #####");
-            Optional<Cooking> optionalCooking = cookingRepository.findByOrderId(id);
+            Optional<Cooking> optionalCooking = cookingRepository.findById(id);
             
             optionalCooking.orElseThrow(()-> new Exception("No Entity Found"));
             Cooking cooking = optionalCooking.get();

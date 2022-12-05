@@ -26,7 +26,7 @@ public class Inventory  {
     
     
     
-    // private String foodId;
+    private Long foodId;
     
     
     
@@ -56,7 +56,7 @@ public class Inventory  {
 
         /** Example 2:  finding and process */
         
-        repository().findById(orderPlaced.getFoodId()).ifPresent(inventory->{
+        repository().findByFoodId(orderPlaced.getFoodId()).ifPresent(inventory->{
             
             inventory.setStock(inventory.getStock() - orderPlaced.getQty()); // do something
             repository().save(inventory);
@@ -77,7 +77,7 @@ public class Inventory  {
 
         /** Example 2:  finding and process */
         
-        repository().findById(orderCancelled.getFoodId()).ifPresent(inventory->{
+        repository().findByFoodId(orderCancelled.getFoodId()).ifPresent(inventory->{
             
             inventory.setStock(inventory.getStock() + orderCancelled.getQty()); // do something
             repository().save(inventory);
