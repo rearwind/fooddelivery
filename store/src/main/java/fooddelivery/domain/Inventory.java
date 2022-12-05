@@ -67,6 +67,27 @@ public class Inventory  {
 
         
     }
+    public static void increase(OrderCancelled orderCancelled){
+
+        /** Example 1:  new item 
+        Inventory inventory = new Inventory();
+        repository().save(inventory);
+
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(orderCancelled.get???()).ifPresent(inventory->{
+            
+            inventory // do something
+            repository().save(inventory);
+
+
+         });
+        */
+
+        
+    }
 
 
 }

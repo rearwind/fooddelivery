@@ -107,6 +107,23 @@ public class PolicyHandler{
 
     }
 
+    @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='OrderCancelled'")
+    public void wheneverOrderCancelled_Increase(@Payload OrderCancelled orderCancelled){
+
+        OrderCancelled event = orderCancelled;
+        System.out.println("\n\n##### listener Increase : " + orderCancelled + "\n\n");
+
+
+        
+
+        // Sample Logic //
+        Inventory.increase(event);
+        
+
+        
+
+    }
+
 }
 
 
