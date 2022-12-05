@@ -43,6 +43,16 @@ public class Order  {
     //     if(cookingService().checkAvailability(Long.valueOf(getOrderId())).getStock() < getQty()) throw new RuntimeException("Out of stock");
     // }
 
+    @PrePersist
+    public void onPrePersist() {
+        
+        fooddelivery.external.Inventory inventory =
+            OrderApplication.applicationContext.getBean(fooddelivery.external.InventoryService.class)
+           .getInventory(getFoodId());
+
+        if(inventory.getStock() < getQty()) throw new RuntimeException("Out of Stock!");
+
+    }
 
     @PostPersist
     public void onPostPersist(){
@@ -65,20 +75,28 @@ public class Order  {
 
     }    
 
-    @PreRemove
-    public void onPreRemove() {
+    //@PreRemove
+    // public void onPreRemove() {
+    //     // Get request from Inventory
+    //     fooddelivery.external.Cooking cooking =
+    //         OrderApplication.applicationContext.getBean(fooddelivery.external.CookingService.class)
+    //        .getCooking(Long.valueOf(getId()));
+
+    //     if ("요리시작됨".equals(cooking.getStatus()) || "요리완료됨".equals(cooking.getStatus())) throw new RuntimeException("요리시작됨!");
+
+    //     OrderCancelled orderCancelled = new OrderCancelled(this);
+    //     orderCancelled.publishAfterCommit();
+
         // Get request from Inventory
-        fooddelivery.external.Cooking cooking =
-            OrderApplication.applicationContext.getBean(fooddelivery.external.CookingService.class)
-           .getCooking(Long.valueOf(getId()));
+        //fooddelivery.external.Inventory inventory =
+        //    Application.applicationContext.getBean(fooddelivery.external.InventoryService.class)
+        //    .getInventory(/** mapping value needed */);
 
-        if ("요리시작됨".equals(cooking.getStatus()) || "요리완료됨".equals(cooking.getStatus())) throw new RuntimeException("요리시작됨!");
+    //}
 
-        OrderCancelled orderCancelled = new OrderCancelled(this);
-        orderCancelled.publishAfterCommit();
-
+    @PreRemove
+    public void onPreRemove(){
     }
-
 
     public static OrderRepository repository(){
         OrderRepository orderRepository = OrderApplication.applicationContext.getBean(OrderRepository.class);

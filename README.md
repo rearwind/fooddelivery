@@ -45,7 +45,8 @@ mvn spring-boot:run
 ```
 - store
 ```
- http :8088/cookings id="id" orderId="orderId" foodId="foodId" qty="qty" address="address" customerId="customerId" status="status" available="available" 
+ http :8088/cookings id="id" orderId="orderId" foodId="foodId" qty="qty" address="address" customerId="customerId" status="status" 
+ http :8088/inventories id="id" foodId="foodId" stock="stock" 
 ```
 - delivery
 ```
