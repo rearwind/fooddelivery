@@ -25,7 +25,7 @@ public class Order  {
     
     private Long id;
     
-    private String foodId;
+    private Long foodId;
     
     private Integer qty;
 
@@ -46,11 +46,11 @@ public class Order  {
     @PrePersist
     public void onPrePersist() {
         
-        fooddelivery.external.Inventory inventory =
-            OrderApplication.applicationContext.getBean(fooddelivery.external.InventoryService.class)
-           .getInventory(getFoodId());
+        // fooddelivery.external.Inventory inventory =
+        //     OrderApplication.applicationContext.getBean(fooddelivery.external.InventoryService.class)
+        //    .getInventory(getFoodId());
 
-        if(inventory.getStock() < getQty()) throw new RuntimeException("Out of Stock!");
+        // if(inventory.getStock() < getQty()) throw new RuntimeException("Out of Stock!");
 
     }
 

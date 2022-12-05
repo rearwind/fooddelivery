@@ -10,7 +10,7 @@ public class OrderAccepted extends AbstractEvent {
 
     private Long id;
     private Long orderId;
-    private String foodId;
+    private Long foodId;
     private Integer qty;
     private String address;
     private String customerId;

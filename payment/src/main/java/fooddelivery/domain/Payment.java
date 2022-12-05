@@ -53,6 +53,13 @@ public class Payment  {
                     payAccepted.publish();
                 }
             });
+
+
+            // try {
+            //     Thread.currentThread().sleep((long) (400 + Math.random() * 250));
+            // } catch (InterruptedException e) {
+            //     e.printStackTrace();
+            // }
         }
     }
 
@@ -88,13 +95,13 @@ public class Payment  {
 
 
 
-    public void pay(){
-        // if ("cancel".equals(action)) {
-        //     PayCancelled payCancelled = new PayCancelled();
-        //     BeanUtils.copyProperties(this, payCancelled);
-        //     payCancelled.publish();
-        // }
-    }
+    // public void pay(){
+    //     if ("cancel".equals(action)) {
+    //         PayCancelled payCancelled = new PayCancelled();
+    //         BeanUtils.copyProperties(this, payCancelled);
+    //         payCancelled.publish();
+    //     }
+    // }
 
     public static void updateStatus(OrderCancelled orderCancelled){
 

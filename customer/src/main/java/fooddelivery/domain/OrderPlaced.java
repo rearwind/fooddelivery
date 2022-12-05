@@ -8,7 +8,7 @@ import java.util.*;
 public class OrderPlaced extends AbstractEvent {
 
     private Long id;
-    private String foodId;
+    private Long foodId;
     private Integer qty;
     private Long price;
     private String customerId;

@@ -32,7 +32,7 @@ public class Cooking  {
     
     
     
-    private String foodId;
+    private Long foodId;
     
     
     

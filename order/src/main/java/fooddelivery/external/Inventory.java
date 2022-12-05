@@ -6,7 +6,7 @@ import java.util.Date;
 public class Inventory {
 
     private Long id;
-    private String foodId;
+    private Long foodId;
     private Integer stock;
 }
 
