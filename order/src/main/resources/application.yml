@@ -1,12 +1,5 @@
 server:
   port: 8080
-feign:
-  hystrix:
-    enabled: true
-hystrix:
-  command:
-    default:
-      execution.isolation.thread.timeoutInMilliseconds: 500
 spring:
   application:
     name: order
@@ -48,8 +41,12 @@ logging:
 
 api:
   url:
+<<<<<<< HEAD
     payment: localhost:8082
     store: localhost:8083
+=======
+    payment: payment:8082
+>>>>>>> origin/template
 
 
 server:
@@ -83,7 +80,11 @@ spring:
 
 api:
   url:
+<<<<<<< HEAD
     payment: localhost:8082
     store: localhost:8083
+=======
+    payment: payment:8080
+>>>>>>> origin/template
 
 

@@ -1,7 +1,5 @@
 package fooddelivery.domain;
 
-import fooddelivery.domain.DeliveryCancelled;
-import fooddelivery.domain.Delivered;
 import fooddelivery.DeliveryApplication;
 import javax.persistence.*;
 import java.util.List;
@@ -51,13 +49,14 @@ public class Delivery  {
     @PostPersist
     public void onPostPersist(){
 
-        // DeliveryCancelled deliveryCancelled = new DeliveryCancelled(this);
-        // deliveryCancelled.publishAfterCommit();
+
+        DeliveryCancelled deliveryCancelled = new DeliveryCancelled(this);
+        deliveryCancelled.publishAfterCommit();
 
 
 
-        // Delivered delivered = new Delivered(this);
-        // delivered.publishAfterCommit();
+        Delivered delivered = new Delivered(this);
+        delivered.publishAfterCommit();
 
     }
 
@@ -77,11 +76,6 @@ public class Delivery  {
     }
 
     public void confirmDelivered(){
-
-        setStatus("배달완료됨");
-        Delivered delivered = new Delivered(this);
-        delivered.publishAfterCommit();
-        
     }
 
     public static void copyOrderInfo(OrderAccepted orderAccepted){
@@ -148,6 +142,27 @@ public class Delivery  {
 
          });
         
+
+        
+    }
+    public static void updateStatus(OrderCancelled orderCancelled){
+
+        /** Example 1:  new item 
+        Delivery delivery = new Delivery();
+        repository().save(delivery);
+
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(orderCancelled.get???()).ifPresent(delivery->{
+            
+            delivery // do something
+            repository().save(delivery);
+
+
+         });
+        */
 
         
     }

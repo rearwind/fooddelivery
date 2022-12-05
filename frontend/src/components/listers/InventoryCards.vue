@@ -68,8 +68,8 @@
             me.values = temp.data._embedded.inventories;
             
             me.newValue = {
-                'foodId': '',
                 'stock': 0,
+                'foodId': 0,
             }
         },
         methods:{

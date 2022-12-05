@@ -9,7 +9,7 @@
                 <Number label="OrderId" v-model="item.orderId" :editMode="editMode" @change="change" />
             </div>
             <div>
-                <String label="FoodId" v-model="item.foodId" :editMode="editMode" @change="change" />
+                <Number label="FoodId" v-model="item.foodId" :editMode="editMode" @change="change" />
             </div>
             <div>
                 <Number label="Qty" v-model="item.qty" :editMode="editMode" @change="change" />
@@ -22,9 +22,6 @@
             </div>
             <div>
                 <String label="Status" v-model="item.status" :editMode="editMode" @change="change" />
-            </div>
-            <div>
-                <Boolean label="Available" v-model="item.available" :editMode="editMode" @change="change" />
             </div>
         </v-card-text>
 

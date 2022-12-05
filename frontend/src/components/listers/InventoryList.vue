@@ -16,8 +16,8 @@
 
                         <v-list-item-subtitle style="font-size:25px; font-weight:700;">
                             [ Id :  {{data.id }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            [ FoodId :  {{data.foodId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ Stock :  {{data.stock }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ FoodId :  {{data.foodId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </v-list-item-subtitle>
 
                     </v-list-item-content>
@@ -99,8 +99,8 @@
             this.values = temp.data._embedded.inventories;
             
             this.newValue = {
-                'foodId': '',
                 'stock': 0,
+                'foodId': 0,
             }
         },
         methods: {

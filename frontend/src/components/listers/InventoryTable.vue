@@ -67,8 +67,8 @@
             headers: 
                 [
                     { text: "id", value: "id" },
-                    { text: "foodId", value: "foodId" },
                     { text: "stock", value: "stock" },
+                    { text: "foodId", value: "foodId" },
                 ],
             inventory : [],
             newValue: {},
@@ -86,8 +86,8 @@
             this.values = temp.data._embedded.inventories;
 
             this.newValue = {
-                'foodId': '',
                 'stock': 0,
+                'foodId': 0,
             }
         },
         methods: {

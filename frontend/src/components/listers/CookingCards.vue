@@ -69,12 +69,11 @@
             
             me.newValue = {
                 'orderId': 0,
-                'foodId': '',
+                'foodId': 0,
                 'qty': 0,
                 'address': '',
                 'customerId': '',
                 'status': '',
-                'available': false,
             }
         },
         methods:{
