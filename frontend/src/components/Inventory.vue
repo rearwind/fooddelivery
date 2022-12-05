@@ -17,8 +17,8 @@
         </v-card-title >
 
         <v-card-text>
-            <String label="FoodId" v-model="value.foodId" :editMode="editMode"/>
             <Number label="Stock" v-model="value.stock" :editMode="editMode"/>
+            <Number label="FoodId" v-model="value.foodId" :editMode="editMode"/>
         </v-card-text>
 
         <v-card-actions>

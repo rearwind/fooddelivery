@@ -18,12 +18,11 @@
 
         <v-card-text>
             <Number label="OrderId" v-model="value.orderId" :editMode="editMode"/>
-            <String label="FoodId" v-model="value.foodId" :editMode="editMode"/>
+            <Number label="FoodId" v-model="value.foodId" :editMode="editMode"/>
             <Number label="Qty" v-model="value.qty" :editMode="editMode"/>
             <String label="Address" v-model="value.address" :editMode="editMode"/>
             <String label="CustomerId" v-model="value.customerId" :editMode="editMode"/>
             <String label="Status" v-model="value.status" :editMode="editMode"/>
-            <Boolean label="Available" v-model="value.available" :editMode="editMode"/>
         </v-card-text>
 
         <v-card-actions>

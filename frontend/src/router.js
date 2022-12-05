@@ -8,6 +8,8 @@ Vue.use(Router);
 import OrderManager from "./components/listers/OrderCards"
 import OrderDetail from "./components/listers/OrderDetail"
 
+import MyPageView from "./components/MyPageView"
+import MyPageViewDetail from "./components/MyPageViewDetail"
 import PaymentManager from "./components/listers/PaymentCards"
 import PaymentDetail from "./components/listers/PaymentDetail"
 
@@ -19,9 +21,6 @@ import InventoryDetail from "./components/listers/InventoryDetail"
 import DeliveryManager from "./components/listers/DeliveryCards"
 import DeliveryDetail from "./components/listers/DeliveryDetail"
 
-
-import MyPageView from "./components/MyPageView"
-import MyPageViewDetail from "./components/MyPageViewDetail"
 
 
 export default new Router({
@@ -39,6 +38,16 @@ export default new Router({
                 component: OrderDetail
             },
 
+            {
+                path: '/myPages',
+                name: 'MyPageView',
+                component: MyPageView
+            },
+            {
+                path: '/myPages/:id',
+                name: 'MyPageViewDetail',
+                component: MyPageViewDetail
+            },
             {
                 path: '/payments',
                 name: 'PaymentManager',
@@ -82,17 +91,6 @@ export default new Router({
                 component: DeliveryDetail
             },
 
-
-            {
-                path: '/myPages',
-                name: 'MyPageView',
-                component: MyPageView
-            },
-            {
-                path: '/myPages/:id',
-                name: 'MyPageViewDetail',
-                component: MyPageViewDetail
-            },
 
 
 

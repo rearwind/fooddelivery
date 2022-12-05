@@ -24,7 +24,6 @@ See the README.md files inside the each microservices directory:
 - payment
 - store
 - delivery
-- customer
 - notification
 
 
@@ -46,14 +45,11 @@ mvn spring-boot:run
 - store
 ```
  http :8088/cookings id="id" orderId="orderId" foodId="foodId" qty="qty" address="address" customerId="customerId" status="status" 
- http :8088/inventories id="id" foodId="foodId" stock="stock" 
+ http :8088/inventories id="id" stock="stock" foodId="foodId" 
 ```
 - delivery
 ```
  http :8088/deliveries id="id" orderId="orderId" address="address" customerId="customerId" status="status" 
-```
-- customer
-```
 ```
 - notification
 ```

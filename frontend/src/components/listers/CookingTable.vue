@@ -73,7 +73,6 @@
                     { text: "address", value: "address" },
                     { text: "customerId", value: "customerId" },
                     { text: "status", value: "status" },
-                    { text: "available", value: "available" },
                 ],
             cooking : [],
             newValue: {},
@@ -92,12 +91,11 @@
 
             this.newValue = {
                 'orderId': 0,
-                'foodId': '',
+                'foodId': 0,
                 'qty': 0,
                 'address': '',
                 'customerId': '',
                 'status': '',
-                'available': false,
             }
         },
         methods: {

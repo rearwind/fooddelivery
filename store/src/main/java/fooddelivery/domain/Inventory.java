@@ -26,13 +26,13 @@ public class Inventory  {
     
     
     
-    private String foodId;
-    
-    
-    
-    
-    
     private Integer stock;
+    
+    
+    
+    
+    
+    private Long foodId;
 
     @PostPersist
     public void onPostPersist(){

@@ -6,10 +6,10 @@
 
         <v-card-text>
             <div>
-                <String label="FoodId" v-model="item.foodId" :editMode="editMode" @change="change" />
+                <Number label="Stock" v-model="item.stock" :editMode="editMode" @change="change" />
             </div>
             <div>
-                <Number label="Stock" v-model="item.stock" :editMode="editMode" @change="change" />
+                <Number label="FoodId" v-model="item.foodId" :editMode="editMode" @change="change" />
             </div>
         </v-card-text>
 

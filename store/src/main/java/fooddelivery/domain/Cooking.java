@@ -32,7 +32,7 @@ public class Cooking  {
     
     
     
-    private String foodId;
+    private Long foodId;
     
     
     
@@ -57,12 +57,6 @@ public class Cooking  {
     
     
     private String status;
-    
-    
-    
-    
-    
-    private Boolean available;
 
     @PostPersist
     public void onPostPersist(){

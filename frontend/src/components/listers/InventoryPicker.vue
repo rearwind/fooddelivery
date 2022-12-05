@@ -15,10 +15,10 @@
                             <v-list-item-title>
                             </v-list-item-title>
                             <v-list-item-subtitle>
-                                FoodId :  {{item.foodId }}
+                                Stock :  {{item.stock }}
                             </v-list-item-subtitle>
                             <v-list-item-subtitle>
-                                Stock :  {{item.stock }}
+                                FoodId :  {{item.foodId }}
                             </v-list-item-subtitle>
                         </v-list-item-content>
 

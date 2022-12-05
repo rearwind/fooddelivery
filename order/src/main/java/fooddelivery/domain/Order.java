@@ -28,7 +28,7 @@ public class Order  {
     
     
     
-    private String foodId;
+    private Long foodId;
     
     
     
@@ -72,19 +72,14 @@ public class Order  {
         OrderPlaced orderPlaced = new OrderPlaced(this);
         orderPlaced.publishAfterCommit();
 
+    }
+    @PreRemove
+    public void onPreRemove(){
 
 
         OrderCancelled orderCancelled = new OrderCancelled(this);
         orderCancelled.publishAfterCommit();
 
-        // Get request from Inventory
-        //fooddelivery.external.Inventory inventory =
-        //    Application.applicationContext.getBean(fooddelivery.external.InventoryService.class)
-        //    .getInventory(/** mapping value needed */);
-
-    }
-    @PreRemove
-    public void onPreRemove(){
     }
 
     public static OrderRepository repository(){
