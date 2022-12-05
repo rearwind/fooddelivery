@@ -89,11 +89,13 @@ public class Cooking  {
 
     }
     public void start(){
+        setStatus("요리시작됨");
         CookingStarted cookingStarted = new CookingStarted(this);
         cookingStarted.publishAfterCommit();
 
     }
     public void finish(){
+        setStatus("요리완료됨");
         CookingFinished cookingFinished = new CookingFinished(this);
         cookingFinished.publishAfterCommit();
 

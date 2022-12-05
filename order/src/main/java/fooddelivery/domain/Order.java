@@ -36,6 +36,13 @@ public class Order  {
  
     private String status;
 
+
+    @PrePersist
+    public void checkAvailability(){
+        if(cookingService().checkAvailability(Long.valueOf(getOrderId())).getStock() < getQty()) throw new RuntimeException("Out of stock");
+    }
+
+
     @PostPersist
     public void onPostPersist(){
 

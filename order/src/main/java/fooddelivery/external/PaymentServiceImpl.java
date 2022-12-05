@@ -13,5 +13,11 @@ public class PaymentServiceImpl implements PaymentService {
         Payment payment = new Payment();
         return payment;
     }
+
+    @Override
+    public void pay(Long id, Payment payment) {
+        // TODO Auto-generated method stub
+        
+    }
 }
 
