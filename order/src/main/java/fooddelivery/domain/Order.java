@@ -19,25 +19,10 @@ public class Order  {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     
-    
-    
-    
-    
+
     private Long id;
     
-<<<<<<< HEAD
-    private Long foodId;
-=======
-    
-    
-    
-    
-    private Long foodId;
-    
-    
-    
-    
->>>>>>> origin/template
+    private Long foodId;    
     
     private Integer qty;
 
@@ -85,13 +70,7 @@ public class Order  {
         OrderPlaced orderPlaced = new OrderPlaced(this);
         orderPlaced.publishAfterCommit();
 
-<<<<<<< HEAD
     }    
-=======
-    }
-    @PreRemove
-    public void onPreRemove(){
->>>>>>> origin/template
 
     @PreRemove
      public void onPreRemove() {
@@ -105,14 +84,6 @@ public class Order  {
          OrderCancelled orderCancelled = new OrderCancelled(this);
          orderCancelled.publishAfterCommit();
 
-<<<<<<< HEAD
-        // Get request from Inventory
-        //fooddelivery.external.Inventory inventory =
-        //    Application.applicationContext.getBean(fooddelivery.external.InventoryService.class)
-        //    .getInventory(/** mapping value needed */);
-
-=======
->>>>>>> origin/template
     }
 
     public static OrderRepository repository(){
