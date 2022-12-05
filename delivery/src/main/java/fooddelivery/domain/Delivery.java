@@ -139,7 +139,7 @@ public class Delivery  {
 
         
     }
-    public static void updateStatus(OrderCancelled orderCancelled){
+    public static void removeDelivery(OrderCancelled orderCancelled){
 
         /** Example 1:  new item 
         Delivery delivery = new Delivery();
