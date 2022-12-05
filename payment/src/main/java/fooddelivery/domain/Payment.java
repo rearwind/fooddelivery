@@ -41,6 +41,12 @@ public class Payment  {
     
     
     private String status;
+    
+    
+    
+    
+    
+    private String action;
 
     @PostPersist
     public void onPostPersist(){

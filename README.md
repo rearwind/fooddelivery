@@ -41,7 +41,7 @@ mvn spring-boot:run
 ```
 - payment
 ```
- http :8088/payments id="id" orderId="orderId" price="price" status="status" 
+ http :8088/payments id="id" orderId="orderId" price="price" status="status" action="action" 
 ```
 - store
 ```
