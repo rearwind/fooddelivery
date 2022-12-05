@@ -62,6 +62,14 @@
         </v-card-actions>
         <v-card-actions>
             <v-spacer></v-spacer>
+            <v-btn
+                    v-if="!editMode"
+                    color="deep-purple lighten-2"
+                    text
+                    @click="cancelOrder"
+            >
+                CancelOrder
+            </v-btn>
         </v-card-actions>
 
         <v-snackbar
@@ -193,10 +201,10 @@
             change(){
                 this.$emit('input', this.value);
             },
-            async () {
+            async cancelOrder() {
                 try {
                     if(!this.offline) {
-                        var temp = await axios.put(axios.fixUrl(this.value._links[''].href))
+                        var temp = await axios.put(axios.fixUrl(this.value._links['cancelorder'].href))
                         for(var k in temp.data) {
                             this.value[k]=temp.data[k];
                         }

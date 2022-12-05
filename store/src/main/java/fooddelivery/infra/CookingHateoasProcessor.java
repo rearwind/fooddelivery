@@ -13,6 +13,7 @@ public class CookingHateoasProcessor implements RepresentationModelProcessor<Ent
     public EntityModel<Cooking> process(EntityModel<Cooking> model) {
         model.add(Link.of(model.getRequiredLink("self").getHref() + "/accept").withRel("accept"));
         model.add(Link.of(model.getRequiredLink("self").getHref() + "/start").withRel("start"));
+        model.add(Link.of(model.getRequiredLink("self").getHref() + "/finish").withRel("finish"));
 
         
         return model;
