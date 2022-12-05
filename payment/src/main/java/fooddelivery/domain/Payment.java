@@ -23,24 +23,33 @@ public class Payment  {
     
     
     private Long id;
-    
-    
-    
-    
-    
+   
     private Long orderId;
-    
-    
-    
-    
-    
+ 
     private Long price;
-    
-    
-    
-    
-    
+
     private String status;
+
+
+    @PrePersist
+    public void onPrePersist(){
+        if ("cancel".equals(action)) {
+            PaymentCancelled paymentCancelled = new PaymentCancelled();
+            BeanUtils.copyProperties(this, paymentCancelled);
+            paymentCancelled.publish();
+        } else {
+            Paid paid = new Paid();
+            BeanUtils.copyProperties(this, paid);
+    
+            TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronizationAdapter() {
+                @Override
+                public void beforeCommit(boolean readOnly) {
+                    paid.publish();
+                }
+            });
+        }
+    }
+
 
     @PostPersist
     public void onPostPersist(){
@@ -76,9 +85,9 @@ public class Payment  {
         payCancelled.publishAfterCommit();
         */
 
-        /** Example 2:  finding and process
+        /** Example 2:  finding and process */
         
-        repository().findById(orderCancelled.get???()).ifPresent(payment->{
+        repository().findByOrderId(orderCancelled.getId()).ifPresent(payment->{
             
             payment // do something
             repository().save(payment);
@@ -87,7 +96,7 @@ public class Payment  {
             payCancelled.publishAfterCommit();
 
          });
-        */
+        
 
         
     }

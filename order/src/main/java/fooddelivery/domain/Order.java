@@ -36,8 +36,8 @@ public class Order  {
  
     private String status;
 
-    @PrePersist
-    public void onPrePersist(){
+    @PostPersist
+    public void onPostPersist(){
 
         //Following code causes dependency to external APIs
         // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
@@ -55,14 +55,6 @@ public class Order  {
 
     }    
 
-    @PostPersist
-    public void onPostPersist(){
-
-
-        OrderCancelled orderCancelled = new OrderCancelled(this);
-        orderCancelled.publishAfterCommit();
-
-    }
 
 
     public static OrderRepository repository(){
@@ -73,6 +65,8 @@ public class Order  {
 
 
     public void cancelOrder(){
+
+
     }
 
     public static void updateStatus(OrderAccepted orderAccepted){
