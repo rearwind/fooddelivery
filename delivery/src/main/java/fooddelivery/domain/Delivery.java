@@ -49,12 +49,6 @@ public class Delivery  {
     @PostPersist
     public void onPostPersist(){
 
-
-        DeliveryCancelled deliveryCancelled = new DeliveryCancelled(this);
-        deliveryCancelled.publishAfterCommit();
-
-
-
         Delivered delivered = new Delivered(this);
         delivered.publishAfterCommit();
 
@@ -153,16 +147,14 @@ public class Delivery  {
 
         */
 
-        /** Example 2:  finding and process
+        /** Example 2:  finding and process */
         
-        repository().findById(orderCancelled.get???()).ifPresent(delivery->{
+        repository().findByOrderId(orderCancelled.getId()).ifPresent(delivery->{
             
-            delivery // do something
-            repository().save(delivery);
+            repository().delete(delivery);
 
 
          });
-        */
 
         
     }

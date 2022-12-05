@@ -8,14 +8,10 @@ import java.util.*;
 public class OrderCancelled extends AbstractEvent {
 
     private Long id;
-<<<<<<< HEAD
     private Long foodId;
-=======
->>>>>>> origin/template
     private Integer qty;
     private Long price;
     private String customerId;
     private String address;
     private String status;
-    private Long foodId;
 }

@@ -2,7 +2,7 @@ server:
   port: 8080
 spring:
   application:
-    name: order
+    name: customer
 ---
 
 spring:
@@ -27,7 +27,7 @@ spring:
                   serde: org.apache.kafka.common.serialization.Serdes$StringSerde
       bindings:
         event-in:
-          group: order
+          group: customer
           destination: fooddelivery
           contentType: application/json
         event-out:
@@ -39,14 +39,9 @@ logging:
     org.hibernate.type: trace
     org.springframework.cloud: debug
 
-api:
-  url:
-    payment: localhost:8082
-    store: localhost:8083
-
 
 server:
-  port: 8081
+  port: 8085
 
 ---
 
@@ -67,16 +62,11 @@ spring:
                   serde: org.apache.kafka.common.serialization.Serdes$StringSerde
       bindings:
         event-in:
-          group: order
+          group: customer
           destination: fooddelivery
           contentType: application/json
         event-out:
           destination: fooddelivery
           contentType: application/json
-
-api:
-  url:
-    payment: localhost:8082
-    store: localhost:8083
 
 
