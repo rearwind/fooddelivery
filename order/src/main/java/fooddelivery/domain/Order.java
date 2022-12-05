@@ -77,6 +77,11 @@ public class Order  {
         OrderCancelled orderCancelled = new OrderCancelled(this);
         orderCancelled.publishAfterCommit();
 
+        // Get request from Cooking
+        //fooddelivery.external.Cooking cooking =
+        //    Application.applicationContext.getBean(fooddelivery.external.CookingService.class)
+        //    .getCooking(/** mapping value needed */);
+
     }
 
     public static OrderRepository repository(){

@@ -73,6 +73,7 @@
                     { text: "address", value: "address" },
                     { text: "customerId", value: "customerId" },
                     { text: "status", value: "status" },
+                    { text: "stock", value: "stock" },
                 ],
             cooking : [],
             newValue: {},
@@ -96,6 +97,7 @@
                 'address': '',
                 'customerId': '',
                 'status': '',
+                'stock': 0,
             }
         },
         methods: {

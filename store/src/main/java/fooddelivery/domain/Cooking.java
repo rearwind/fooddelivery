@@ -57,6 +57,12 @@ public class Cooking  {
     
     
     private String status;
+    
+    
+    
+    
+    
+    private Integer stock;
 
     @PostPersist
     public void onPostPersist(){
