@@ -72,10 +72,10 @@ public class Order  {
             OrderApplication.applicationContext.getBean(fooddelivery.external.CookingService.class)
            .getCooking(Long.valueOf(getId()));
 
-        if ("요리시작됨".equals(cooking.getStatus()) || "요리완료됨".equals(cooking.getStatus())) throw new RuntimeException("Cooking Started !");
+        OrderCancelled orderCancelled = new OrderCancelled(this);
+        orderCancelled.publishAfterCommit();
 
     }
-
 
 
     public static OrderRepository repository(){
@@ -94,6 +94,8 @@ public class Order  {
         // }
 
     }
+
+
 
     public static void updateStatus(OrderAccepted orderAccepted){
 
