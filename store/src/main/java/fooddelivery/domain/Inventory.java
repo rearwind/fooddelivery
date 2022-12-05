@@ -75,16 +75,16 @@ public class Inventory  {
 
         */
 
-        /** Example 2:  finding and process
+        /** Example 2:  finding and process */
         
-        repository().findById(orderCancelled.get???()).ifPresent(inventory->{
+        repository().findByFoodId(orderCancelled.getFoodId()).ifPresent(inventory->{
             
-            inventory // do something
+            inventory.setStock(inventory.getStock() + orderCancelled.getQty()); // do something
             repository().save(inventory);
 
 
          });
-        */
+        
 
         
     }
