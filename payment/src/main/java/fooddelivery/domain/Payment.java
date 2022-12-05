@@ -1,7 +1,7 @@
 package fooddelivery.domain;
 
-import fooddelivery.domain.PayAccepted;
 import fooddelivery.domain.PayCancelled;
+import fooddelivery.domain.PayAccepted;
 import fooddelivery.PaymentApplication;
 import javax.persistence.*;
 import java.util.List;
@@ -46,13 +46,16 @@ public class Payment  {
     public void onPostPersist(){
 
 
-        PayAccepted payAccepted = new PayAccepted(this);
-        payAccepted.publishAfterCommit();
-
-
-
         PayCancelled payCancelled = new PayCancelled(this);
         payCancelled.publishAfterCommit();
+
+    }
+    @PrePersist
+    public void onPrePersist(){
+
+
+        PayAccepted payAccepted = new PayAccepted(this);
+        payAccepted.publishAfterCommit();
 
     }
 
