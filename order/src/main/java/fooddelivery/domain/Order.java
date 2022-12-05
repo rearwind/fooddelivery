@@ -77,6 +77,9 @@ public class Order  {
         OrderCancelled orderCancelled = new OrderCancelled(this);
         orderCancelled.publishAfterCommit();
 
+    }
+    @PreRemove
+    public void onPreRemove(){
         // Get request from Cooking
         //fooddelivery.external.Cooking cooking =
         //    Application.applicationContext.getBean(fooddelivery.external.CookingService.class)
@@ -89,10 +92,11 @@ public class Order  {
         return orderRepository;
     }
 
-
-
-    public void cancelOrder(){
+    public void cancel order(){
+        //
     }
+
+
 
     public static void updateStatus(OrderAccepted orderAccepted){
 
