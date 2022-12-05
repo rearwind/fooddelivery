@@ -66,7 +66,7 @@ public class Payment  {
     public void pay(){
     }
 
-    public static void cancelPayment(OrderCancelled orderCancelled){
+    public static void updateStatus(OrderCancelled orderCancelled){
 
         /** Example 1:  new item 
         Payment payment = new Payment();
