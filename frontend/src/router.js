@@ -13,6 +13,8 @@ import PaymentDetail from "./components/listers/PaymentDetail"
 
 import CookingManager from "./components/listers/CookingCards"
 import CookingDetail from "./components/listers/CookingDetail"
+import InventoryManager from "./components/listers/InventoryCards"
+import InventoryDetail from "./components/listers/InventoryDetail"
 
 import DeliveryManager from "./components/listers/DeliveryCards"
 import DeliveryDetail from "./components/listers/DeliveryDetail"
@@ -57,6 +59,16 @@ export default new Router({
                 path: '/cookings/:id',
                 name: 'CookingDetail',
                 component: CookingDetail
+            },
+            {
+                path: '/inventories',
+                name: 'InventoryManager',
+                component: InventoryManager
+            },
+            {
+                path: '/inventories/:id',
+                name: 'InventoryDetail',
+                component: InventoryDetail
             },
 
             {

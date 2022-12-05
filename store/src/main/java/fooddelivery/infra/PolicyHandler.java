@@ -19,6 +19,7 @@ import fooddelivery.domain.*;
 @Transactional
 public class PolicyHandler{
     @Autowired CookingRepository cookingRepository;
+    @Autowired InventoryRepository inventoryRepository;
     
     @StreamListener(KafkaProcessor.INPUT)
     public void whatever(@Payload String eventString){}
@@ -83,6 +84,23 @@ public class PolicyHandler{
 
         // Sample Logic //
         Cooking.updateStatus(event);
+        
+
+        
+
+    }
+
+    @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='OrderPlaced'")
+    public void wheneverOrderPlaced_Decrease(@Payload OrderPlaced orderPlaced){
+
+        OrderPlaced event = orderPlaced;
+        System.out.println("\n\n##### listener Decrease : " + orderPlaced + "\n\n");
+
+
+        
+
+        // Sample Logic //
+        Inventory.decrease(event);
         
 
         

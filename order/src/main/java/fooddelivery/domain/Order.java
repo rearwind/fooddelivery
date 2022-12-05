@@ -77,14 +77,14 @@ public class Order  {
         OrderCancelled orderCancelled = new OrderCancelled(this);
         orderCancelled.publishAfterCommit();
 
+        // Get request from Inventory
+        //fooddelivery.external.Inventory inventory =
+        //    Application.applicationContext.getBean(fooddelivery.external.InventoryService.class)
+        //    .getInventory(/** mapping value needed */);
+
     }
     @PreRemove
     public void onPreRemove(){
-        // Get request from Cooking
-        //fooddelivery.external.Cooking cooking =
-        //    Application.applicationContext.getBean(fooddelivery.external.CookingService.class)
-        //    .getCooking(/** mapping value needed */);
-
     }
 
     public static OrderRepository repository(){
