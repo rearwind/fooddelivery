@@ -24,41 +24,36 @@ public class Order  {
     
     private Long id;
     
-    
-    
-    
-    
     private String foodId;
     
-    
-    
-    
-    
     private Integer qty;
-    
-    
-    
-    
-    
+
     private Long price;
-    
-    
-    
-    
-    
+
     private String customerId;
-    
-    
-    
-    
-    
+
     private String address;
-    
-    
-    
-    
-    
+ 
     private String status;
+
+    @PrePersist
+    public void onPrePersist(){
+
+        //Following code causes dependency to external APIs
+        // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
+        
+        fooddelivery.external.Payment payment = new fooddelivery.external.Payment();
+        payment.setOrderId(getId());
+        if (getPrice()!=null)
+            payment.setPrice(getPrice());
+
+        OrderApplication.applicationContext.getBean(fooddelivery.external.PaymentService.class)
+            .pay(payment);
+
+        OrderPlaced orderPlaced = new OrderPlaced(this);
+        orderPlaced.publishAfterCommit();
+
+    }    
 
     @PostPersist
     public void onPostPersist(){
@@ -68,19 +63,7 @@ public class Order  {
         orderCancelled.publishAfterCommit();
 
     }
-    @PrePersist
-    public void onPrePersist(){
 
-        //Following code causes dependency to external APIs
-        // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
-
-
-
-
-        OrderPlaced orderPlaced = new OrderPlaced(this);
-        orderPlaced.publishAfterCommit();
-
-    }
 
     public static OrderRepository repository(){
         OrderRepository orderRepository = OrderApplication.applicationContext.getBean(OrderRepository.class);
